@@ -32,8 +32,8 @@
 				<u--image :showLoading="true" :src="baseListItem.thumb" width="80px" height="200px" @click="click"></u--image>
 			</u-grid-item>
 		</u-grid> -->
-		<u-tabbar :value="value6" @change="name => value6 = name" :fixed="true" :placeholder="true"
-			:safeAreaInsetBottom="true">
+		<u-tabbar :value="tabeIndex" :fixed="true" :placeholder="true"
+			:safeAreaInsetBottom="true" zIndex="100">
 			<u-tabbar-item text="首页" icon="home" @click="navigate"></u-tabbar-item>
 			<u-tabbar-item text="创作者" icon="photo" @click="navigate"></u-tabbar-item>
 			<u-tabbar-item text="我的" icon="account" @click="navigate"></u-tabbar-item>
@@ -49,7 +49,7 @@
 				tips: '',
 				value: '',
 				title: 'Hello',
-				value6: 0,
+				tabeIndex:0,
 				indicator: true,
 				list: [{
 					thumb: "https://api.lorem.space/image/face?hash=88560"
@@ -62,25 +62,26 @@
 				}, {
 					thumb: "https://api.lorem.space/image/face?hash=88564"
 				}],
-				baseList: [{
-						thumb: "https://api.lorem.space/image/movie?w=80&h=200"
-					},
-					{
-						thumb: "https://api.lorem.space/image/movie?w=80&h=200"
-					}, {
-						thumb: "https://api.lorem.space/image/movie?w=80&h=200"
-					}, {
-						thumb: "https://api.lorem.space/image/movie?w=80&h=200"
-					}, {
-						thumb: "https://api.lorem.space/image/movie?w=80&h=200"
-					}, {
-						thumb: "https://api.lorem.space/image/movie?w=80&h=200"
-					},
+				baseList: [
+					// {
+					// 	thumb: "https://api.lorem.space/image/movie?w=80&h=200"
+					// },
+					// {
+					// 	thumb: "https://api.lorem.space/image/movie?w=80&h=200"
+					// }, {
+					// 	thumb: "https://api.lorem.space/image/movie?w=80&h=200"
+					// }, {
+					// 	thumb: "https://api.lorem.space/image/movie?w=80&h=200"
+					// }, {
+					// 	thumb: "https://api.lorem.space/image/movie?w=80&h=200"
+					// }, {
+					// 	thumb: "https://api.lorem.space/image/movie?w=80&h=200"
+					// },
 				]
 			}
 		},
 		onLoad() {
-
+			this.tabeIndex=0
 		},
 		methods: {
 			click1() {
@@ -90,9 +91,13 @@
 
 			},
 			navigate(){
-				console.log(111111);
+				console.log(this.tabeIndex);
+				if(this.tabeIndex===0){
+					return
+				}
+				const urlArray=['/pages/index/index','/pages/author/author','/pages/me/me']
 				uni.navigateTo({
-					url: '/pages/me/me',
+					url: urlArray[this.tabeIndex],
 				});
 			}
 		}

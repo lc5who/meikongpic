@@ -1,5 +1,6 @@
 <template>
 	<view>
+		我的
 		<u-tabbar :value="tabeIndex" @change="name => tabeIndex = name" :fixed="true" :placeholder="true"
 			:safeAreaInsetBottom="true">
 			<u-tabbar-item text="首页" icon="home" @click="navigate"></u-tabbar-item>
@@ -18,9 +19,13 @@
 		},
 		methods:{
 			navigate(){
+				if(this.tabeIndex===2){
+					return
+				}
+				console.log(this.tabeIndex);
 				const urlArray=['/pages/index/index','/pages/author/author','/pages/me/me']
 				uni.navigateTo({
-					url: urlArray[tabeIndex],
+					url: urlArray[this.tabeIndex],
 				});
 			}
 		}
