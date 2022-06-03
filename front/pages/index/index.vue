@@ -1,6 +1,6 @@
 <template>
 	<view class="u-page" style="height: 100vh;width: 100%;background-color: green; padding-left: 5%;padding-right: 5%;">
-		<u-search placeholder="请输入创作者口令" v-model="keyword" shape="square" borderColor="blue" searchIconColor="blue">
+		<u-search placeholder="请输入创作者口令" v-model="keyword" shape="round" borderColor="#473be5" searchIconColor="#473be5" :actionStyle="{background:'#473be5',height:'30px',width:'70px',fontSize:'20px',borderRadius:'15px',}" style="width: 320px;">
 		</u-search>
 		<view class="">
 			推荐创作者
