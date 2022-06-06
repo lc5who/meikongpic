@@ -28,3 +28,4 @@ yarn-error.log*
 
 *.iml
 /front/node_modules
+/front_uni/node_modules
