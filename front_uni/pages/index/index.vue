@@ -5,7 +5,9 @@
 		</view>
 		<view class="search">
 			<view class="search_bar">
-				
+				<uni-icons type="search" size="30" color="rgb(47, 38, 155)"></uni-icons>
+				<input type="text">
+				<button class="search_btn">搜索</button>
 			</view>
 		</view>
 		<view class="author">
@@ -40,7 +42,10 @@
 	export default {
 		data() {
 			return {
-				href: 'https://uniapp.dcloud.io/component/README?id=uniui'
+				href: 'https://uniapp.dcloud.io/component/README?id=uniui',
+				old:{
+					screenTop:0
+				}
 			}
 		},
 		methods: {
@@ -52,12 +57,12 @@
 	}
 </script>
 
-<style scoped="">
+<style scoped="" lang="scss">
 	.container {
 		display: flex;
 		flex-direction: column;
 		width: 100vw;
-		height: 100vh;
+
 		background-color: coral;
 	}
 
@@ -71,10 +76,27 @@
 		background-color: aliceblue;
 		display: flex;
 		justify-content: center;
+		align-items: center;
 	}
-
+	.search_bar{
+		border: 2upx solid purple;
+		border-radius: 25upx;
+		height: 100upx;
+		width: 90%;
+		display: flex;
+		flex-direction: row;
+		justify-content: start;
+		align-items: center;	
+	}
+	.search_btn{
+		width: 200upx;
+		color: white;
+		background-color: rgb(47, 38, 155);
+		
+	}
 	.author {
 		height: 200upx;
+		color: white;
 		background-color: chartreuse;
 		display: flex;
 		flex-direction: column;
