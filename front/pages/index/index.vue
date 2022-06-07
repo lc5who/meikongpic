@@ -1,7 +1,6 @@
 <template>
 	<view class="index">
 		<view class="index_banner">
-
 		</view>
 		<view class="search">
 			<u-search placeholder="请输入创作者口令" v-model="keyword" shape="round" borderColor="#473be5"
