@@ -4,24 +4,20 @@
 
 		</view>
 		<view class="search">
-			inpu
+			<view class="search_bar">
+				
+			</view>
 		</view>
 		<view class="author">
 			<view class="author_title">
 				推荐创作者
 			</view>
 
-				<scroll-view scroll-x="true" scroll-y="false" enable-flex="true" @scroll="scroll" class="author_scroll" style="height: 150upx;">
-					<view v-for="index in 15" :key="index" style="display: inline-block;width: 100upx;height: 100upx;">
-						<image src="../../static/c2.png" mode=""></image>
-					</view>
-				</scroll-view>
-
-			<!-- 			<scroll-view scroll-x="true"  scroll-y="false" class="author_scroll">
-				<view class="author_avatar" v-for="index in 15" :key="index">
-					<image src="../../static/c2.png" mode=""></image>
+			<scroll-view scroll-x="true" scroll-y="false" @scroll="scroll" class="author_scroll">
+				<view class="author_avatar_box" v-for="index in 15" :key="index">
+					<image src="../../static/c2.png" mode="" class="author_avatar_image"></image>
 				</view>
-			</scroll-view> -->
+			</scroll-view>
 		</view>
 		<view class="content">
 			<view class="content_image">
@@ -73,6 +69,8 @@
 	.search {
 		height: 200upx;
 		background-color: aliceblue;
+		display: flex;
+		justify-content: center;
 	}
 
 	.author {
@@ -85,13 +83,19 @@
 		/* padding: 20upx; */
 	}
 
-	.author_avatar {
+	.author_scroll {
+		white-space: nowrap;
+		width: 100%;
+	}
+
+	.author_avatar_box {
 		display: inline-block;
 		width: 80upx;
 		height: 80upx;
+		margin-left: 30upx;
 	}
 
-	.author_avatar image {
+	.author_avatar_image {
 		width: 80upx;
 		height: 80upx;
 		border-radius: 50%;
@@ -110,5 +114,4 @@
 		width: 100%;
 
 	}
-	
 </style>
