@@ -1,7 +1,13 @@
 <template>
 	<view class="container">
-		<view class="banner">
+			<view class="feedback" @click="">
+				<navigator url="/pages/feedback/feedback" hover-class="navigator-hover">
+					我要吐槽
+				</navigator>
 
+			</view>
+		<view class="banner">
+			
 		</view>
 		<view class="search">
 			<view class="search_bar">
@@ -43,8 +49,8 @@
 		data() {
 			return {
 				href: 'https://uniapp.dcloud.io/component/README?id=uniui',
-				old:{
-					screenTop:0
+				old: {
+					screenTop: 0
 				}
 			}
 		},
@@ -57,13 +63,27 @@
 	}
 </script>
 
-<style scoped="" lang="scss">
+<style scoped lang="scss">
 	.container {
 		display: flex;
 		flex-direction: column;
 		width: 100vw;
 
 		background-color: coral;
+	}
+
+	.feedback {
+		height: 140upx;
+		width: 40upx;
+		font-size: 25upx;
+		font-weight: bold;
+		color: white;
+		display: inline-block;
+		background-color: #4738f3;
+		border-top-right-radius: 15upx;
+		border-bottom-right-radius: 15upx;
+		position: fixed;
+		top: 40upx;
 	}
 
 	.banner {
@@ -78,22 +98,25 @@
 		justify-content: center;
 		align-items: center;
 	}
-	.search_bar{
+
+	.search_bar {
 		border: 2upx solid purple;
 		border-radius: 25upx;
 		height: 100upx;
 		width: 90%;
 		display: flex;
 		flex-direction: row;
-		justify-content: start;
-		align-items: center;	
+		justify-content: flex-start;
+		align-items: center;
 	}
-	.search_btn{
+
+	.search_btn {
 		width: 200upx;
 		color: white;
 		background-color: rgb(47, 38, 155);
-		
+
 	}
+
 	.author {
 		height: 200upx;
 		color: white;

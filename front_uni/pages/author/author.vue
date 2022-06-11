@@ -7,7 +7,7 @@
 		<view class="card">
 			<view class="author_avatar_box">
 				<image src="../../static/c2.png" mode="" class="author_avatar_image"></image>
-				<text>星月</text>>
+				<text>星月</text>
 			</view>
 			<view class="card_title">
 				查看全部>
@@ -80,9 +80,12 @@
 		}
 	}
 	.author_avatar_box {
-		display: inline-block;
-		width: 80upx;
+		
+		width: 200upx;
 		height: 80upx;
+		position: relative;
+		top: -40upx;
+		left: 60upx;
 	}
 	
 	.author_avatar_image {
