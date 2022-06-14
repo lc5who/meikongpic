@@ -7,7 +7,7 @@ aliyun-oss:
   base-path: yourBasePath
 autocode:
   transfer-restart: true
-  root: C:\my\meikongpic
+  root: C:\Users\leo\Desktop\meikongpic
   server: /server
   server-api: /api/v1/%s
   server-plug: /plugin/%s
@@ -39,7 +39,7 @@ casbin:
 cors:
   mode: whitelist
   whitelist:
-  - allow-origin: example1.com
+  - allow-origin: localhost:3000
     allow-methods: GET, POST
     allow-headers: content-type
     expose-headers: Content-Length, Access-Control-Allow-Origin, Access-Control-Allow-Headers,
@@ -112,13 +112,13 @@ pgsql:
   log-mode: ""
   log-zap: false
 qiniu:
-  zone: ZoneHuaDong
-  bucket: ""
-  img-path: ""
+  zone: ZoneHuaNan
+  bucket: leobangbang
+  img-path: http://rdgcuypkk.hn-bkt.clouddn.com
   use-https: false
-  access-key: ""
-  secret-key: ""
-  use-cdn-domains: false
+  access-key: 9y7FVy3Zrrmcr-bn7qWykaxfP0F35nhg_Gh1kU3M
+  secret-key: 7xw_nv0XTOHWeIVQ3y-cqIGYZketjcLq0MAvo9fz
+  use-cdn-domains: true
 redis:
   db: 0
   addr: 127.0.0.1:6379
@@ -127,7 +127,7 @@ system:
   env: public
   addr: 8888
   db-type: mysql
-  oss-type: local
+  oss-type: qiniu
   use-multipoint: false
   use-redis: false
   iplimit-count: 15000

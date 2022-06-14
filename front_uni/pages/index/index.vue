@@ -1,13 +1,13 @@
 <template>
 	<view class="container">
-			<view class="feedback" @click="">
-				<navigator url="/pages/feedback/feedback" hover-class="navigator-hover">
-					我要吐槽
-				</navigator>
+		<view class="feedback" @click="">
+			<navigator url="/pages/feedback/feedback" hover-class="navigator-hover">
+				我要吐槽
+			</navigator>
 
-			</view>
+		</view>
 		<view class="banner">
-			
+
 		</view>
 		<view class="search">
 			<view class="search_bar">
@@ -22,9 +22,11 @@
 			</view>
 
 			<scroll-view scroll-x="true" scroll-y="false" @scroll="scroll" class="author_scroll">
-				<view class="author_avatar_box" v-for="index in 15" :key="index">
-					<image src="../../static/c2.png" mode="" class="author_avatar_image"></image>
-				</view>
+				<template v-if="authorList.length!=0">
+					<view class="author_avatar_box" v-for="(item,index) in authorList" :key="index">
+						<image :src="item.avatar" class="author_avatar_image"></image>
+					</view>
+				</template>
 			</scroll-view>
 		</view>
 		<view class="content">
@@ -44,23 +46,37 @@
 	</view>
 </template>
 
-<script>
-	export default {
-		data() {
-			return {
-				href: 'https://uniapp.dcloud.io/component/README?id=uniui',
-				old: {
-					screenTop: 0
-				}
-			}
-		},
-		methods: {
-			scroll: function(e) {
-				console.log(e)
-				this.old.scrollTop = e.detail.scrollTop
-			},
-		}
+<script setup>
+	import {
+		reactive,
+		ref,
+		onMounted,
+		nextTick,
+		onUnmounted
+	} from 'vue'
+	let href = 'https://uniapp.dcloud.io/component/README?id=uniui'
+	let old = {
+		screenTop: 0
 	}
+	let authorList = ref([])
+
+	const scroll = e => {
+		old.scrollTop = e.detail.scrollTop
+	}
+
+	onMounted(() => {
+		uni.request({
+			url: 'http://127.0.0.1:8888/index/index', //仅为示例，并非真实接口地址。
+			success: (res) => {
+				authorList.value = res.data.data.authors
+				console.log(authorList);
+			}
+		});
+	})
+	// nextTick(() => {
+	// 	console.log('nextTick');
+	// 	console.log(authorList);
+	// })
 </script>
 
 <style scoped lang="scss">
