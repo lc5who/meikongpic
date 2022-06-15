@@ -42,7 +42,7 @@
 				</view>
 				</template>
 			</uni-list-item>
-			<uni-list-item title="常见问题" link to="" @click="" class="list_box_list">
+			<uni-list-item title="常见问题" link to="" @click="linkProblem()" class="list_box_list">
 				<template v-slot:body>
 					<view class="list_view">
 					<view>
@@ -66,7 +66,7 @@
 				</view>
 				</template>
 			</uni-list-item>
-			<uni-list-item title="我要吐槽" link to="" @click="" class="list_box_list">
+			<uni-list-item title="我要吐槽" link to="" @click="linkFeedback()" class="list_box_list">
 				<template v-slot:body>
 					<view class="list_view">
 					<view>
@@ -102,6 +102,16 @@
 
 <script setup>
 	const aaa =111;
+	const linkFeedback=()=>{
+		uni.navigateTo({
+			url: '../feedback/feedback'
+		});
+	}
+	const linkProblem=()=>{
+		uni.navigateTo({
+			url: './problem'
+		});
+	}
 	const apitest=()=>{
 		uni.request({
 		  url: "http://101.36.111.54:1031/api/test",
