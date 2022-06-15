@@ -45,6 +45,7 @@
 		width: 98%;
 		border: 2upx solid white;
 		border-radius: 25upx;
+		
 	}
 	
 	.card{

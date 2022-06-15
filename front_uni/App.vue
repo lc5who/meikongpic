@@ -22,11 +22,24 @@
 	page {
 		background-color: #f5f5f5;
 	}
+	
+	* {
+		box-sizing: border-box;
+	}
 
+	/* #endif */
+	
+	/* #ifdef MP-WEIXIN || APP-PLUS */ 
+	::-webkit-scrollbar{ display: none; }
+	/* #endif */
+	
+	/* #ifdef H5 */
+	uni-scroll-view .uni-scroll-view::-webkit-scrollbar { display: none }
 	/* #endif */
 	.example-info {
 		font-size: 14px;
 		color: #333;
 		padding: 10px;
 	}
+	
 </style>
