@@ -14,7 +14,7 @@
 		<view class="card" v-for="(item,index) in cardArr" :value="index">
 			<view class="author_avatar_box" v-if="authorList.length!=0">
 				<image :src="authorList[0].avatar" mode="" class="author_avatar_image"></image>
-				<text class="click_me_text_u">星月</text>
+				<text class="click_me_text_u">{{authorList[0].nickname}}</text>
 			</view>
 			<view class="card_title">
 				查看全部>
@@ -120,6 +120,9 @@
 		position: relative;
 		top: 20upx;
 		left: 10upx;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
 	}
 	
 	.author_avatar_image {
