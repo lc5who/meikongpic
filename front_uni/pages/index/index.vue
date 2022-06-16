@@ -128,7 +128,7 @@
 		width: 200upx;
 		color: white;
 		background-color: rgb(47, 38, 155);
-
+		left: 60upx;
 	}
 
 	.author {

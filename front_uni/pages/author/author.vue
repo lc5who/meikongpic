@@ -1,26 +1,32 @@
 <template>
 	<view class="container">
-		<view class="banner">
-			
+		<view class="author_avatar_box_u">
+			<view>
+			<image src="../../static/logo2.jpg" mode="" class="author_avatar_image_u"></image>
+			</view>
+			<view>
+				<text @click="apitest()" class="click_me_text_u">&nbsp;我的</text>
+			</view>
 		</view>
-		
-		<view class="card">
-			<view class="author_avatar_box">
-				<image src="../../static/c2.png" mode="" class="author_avatar_image"></image>
-				<text>星月</text>
+		<view class="banner">
+			<image src="../../static/join.jpg" class="bannerImage"></image>
+		</view>
+		<view class="card" v-for="(item,index) in cardArr" :value="index">
+			<view class="author_avatar_box" v-if="authorList.length!=0">
+				<image :src="authorList[0].avatar" mode="" class="author_avatar_image"></image>
+				<text class="click_me_text_u">星月</text>
 			</view>
 			<view class="card_title">
 				查看全部>
 			</view>
-			<view class="card_content">
+			<view class="card_content" v-if="imageList.length!=0">
 				<view class="content_image">
-					<image src="../../static/c1.png" mode=""></image>
+					<image :src="imageList[0].url" mode=""></image>
 				</view>
-				
 				<view class="content_image">
-					<image src="../../static/c1.png" mode=""></image>
+					<image :src="imageList[0].url" mode=""></image>
 				</view><view class="content_image">
-					<image src="../../static/c1.png" mode=""></image>
+					<image :src="imageList[0].url" mode=""></image>
 				</view>
 			</view>
 		</view>
@@ -28,7 +34,28 @@
 </template>
 
 <script setup>
-
+	import {
+		reactive,
+		ref,
+		onMounted,
+		nextTick,
+		onUnmounted
+	} from 'vue'
+	const cardArr=[1,2,3,4];
+	let imageList = ref([]);
+	let authorList = ref([]);
+	onMounted(() => {
+		uni.request({
+			url: 'http://127.0.0.1:8888/index/index', //仅为示例，并非真实接口地址。
+			success: (res) => {
+	
+				 authorList.value = res.data.data.authors
+				 imageList.value = res.data.data.imagesList
+				// imageList.value = res.data.data.imgs
+				console.log(authorList)
+			}
+		});
+	})
 </script>
 
 <style lang="scss">
@@ -38,16 +65,22 @@
 		flex-direction: column;
 		justify-content: flex-start;
 		align-items: center;
-		background-color: grey;
+		background-color: rgb(20, 20, 58);
 	}
 	.banner{
 		height: 200upx;
 		width: 98%;
-		border: 2upx solid white;
-		border-radius: 25upx;
+		// border: 2upx solid white;
+		// border-radius: 25upx;
 		
 	}
-	
+	.bannerImage{
+		height: 200upx;
+		width: 98%;
+		// border: 2upx solid white;
+		border-radius: 40upx;
+		
+	}
 	.card{
 		margin-top: 60upx;
 		height: 500upx;
@@ -73,11 +106,11 @@
 	}
 	.content_image{
 		width: 30%;
-		border: 4upx solid white;
-		border-radius: 25px;
 		image{
 			width: 100%;
 			height: 350upx;
+			border: 4upx solid white;
+			border-radius: 25px;
 		}
 	}
 	.author_avatar_box {
@@ -85,8 +118,8 @@
 		width: 200upx;
 		height: 80upx;
 		position: relative;
-		top: -40upx;
-		left: 60upx;
+		top: 20upx;
+		left: 10upx;
 	}
 	
 	.author_avatar_image {
@@ -96,4 +129,22 @@
 		border-radius: 50%;
 		border: solid 5upx white;
 	}
+	.author_avatar_box_u {
+			width: 160upx;
+			height: 70upx;
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			margin-right: 580upx;
+			margin-bottom: 20upx;
+		}
+		.author_avatar_image_u {
+			width: 50upx;
+			height: 50upx;
+			border-radius: 50%;
+			background-color: white;
+		}
+		.click_me_text_u{
+			color: white;
+		}
 </style>

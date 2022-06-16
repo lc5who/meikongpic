@@ -55,7 +55,7 @@
 		width: 100vw;
 		height: 100vh;
 		justify-content: flex-start;
-		background-color: #cacaca;
+		background-color: white;
 		align-items: center;
 	}
 
