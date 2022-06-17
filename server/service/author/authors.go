@@ -1,6 +1,7 @@
 package author
 
 import (
+	"fmt"
 	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	"github.com/flipped-aurora/gin-vue-admin/server/model/author"
 	authorReq "github.com/flipped-aurora/gin-vue-admin/server/model/author/request"
@@ -74,10 +75,12 @@ func (authorsService *AuthorsService) GetAuthorSIndex(count int) interface{} {
 	dbAuthor := global.GVA_DB.Model(&author.Authors{})
 	dbImages := global.GVA_DB.Model(&images.Images{})
 	dbAuthor.Order("id asc").Limit(count).Find(&authors)
-	result := make(map[string]interface{})
 	returnData := make(map[int]interface{})
 	for k, v := range authors {
-		dbImages.Where("author_id = ?", v.ID).Limit(3).Find(&imgs)
+		result := make(map[string]interface{})
+		//dbImages.Where("author_id = ?", v.ID).Limit(3).Find(&imgs)
+		sql := fmt.Sprintf(`select * from images where author_id= %d limit 3`, v.ID)
+		dbImages.Raw(sql).Scan(&imgs)
 		result["nickName"] = v.Nickname
 		result["authorsId"] = v.ID
 		result["avatar"] = v.Avatar

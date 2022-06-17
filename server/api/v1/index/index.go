@@ -45,6 +45,6 @@ func (indexApi *IndexApi) List(c *gin.Context) {
 }
 
 func (indexApi *IndexApi) AuthorSIndex(c *gin.Context) {
-	result := authorService.GetAuthorSIndex(1)
+	result := authorService.GetAuthorSIndex(4)
 	response.OkWithData(gin.H{"result": result}, c)
 }
