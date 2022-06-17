@@ -17,7 +17,8 @@ func (s *IndexRouter) InitIndexRouter(Router *gin.RouterGroup) {
 	var indexApi = v1.ApiGroupApp.IndexApiGroup.IndexApi
 	var homeApi = v1.ApiGroupApp.IndexApiGroup.HomeApi
 	{
-		indexRouterWithoutRecord.GET("index", indexApi.Index) // 根据ID获取Author
+		indexRouterWithoutRecord.GET("index", indexApi.Index)               // 根据ID获取Author
+		indexRouterWithoutRecord.GET("authorsindex", indexApi.AuthorSIndex) // 根据ID获取Author
 	}
 
 	{

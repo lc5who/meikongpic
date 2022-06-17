@@ -11,22 +11,22 @@
 		<view class="banner">
 			<image src="../../static/join.jpg" class="bannerImage"></image>
 		</view>
-		<view class="card" v-for="(item,index) in cardArr" :value="index">
+		<view class="card" v-for="(value,index) in authorList" :key="index">
 			<view class="author_avatar_box" v-if="authorList.length!=0">
-				<image :src="authorList[0].avatar" mode="" class="author_avatar_image"></image>
-				<text class="click_me_text_u">{{authorList[0].nickname}}</text>
+				<image :src="value.avatar" mode="" class="author_avatar_image"></image>
+				<text class="click_me_text_u">{{value.nickName}}</text>
 			</view>
 			<view class="card_title">
 				查看全部>
 			</view>
-			<view class="card_content" v-if="imageList.length!=0">
+			<view class="card_content" v-if="authorList.length!=0">
 				<view class="content_image">
-					<image :src="imageList[0].url" mode=""></image>
+					<image :src="value.images[0].url" mode=""></image>
 				</view>
 				<view class="content_image">
-					<image :src="imageList[0].url" mode=""></image>
+					<image :src="value.images[1].url" mode=""></image>
 				</view><view class="content_image">
-					<image :src="imageList[0].url" mode=""></image>
+					<image :src="value.images[2].url" mode=""></image>
 				</view>
 			</view>
 		</view>
@@ -41,18 +41,12 @@
 		nextTick,
 		onUnmounted
 	} from 'vue'
-	const cardArr=[1,2,3,4];
-	let imageList = ref([]);
 	let authorList = ref([]);
 	onMounted(() => {
 		uni.request({
-			url: 'http://127.0.0.1:8888/index/index', //仅为示例，并非真实接口地址。
+			url: 'http://127.0.0.1:8888/index/authorsindex', //仅为示例，并非真实接口地址。
 			success: (res) => {
-	
-				 authorList.value = res.data.data.authors
-				 imageList.value = res.data.data.imagesList
-				// imageList.value = res.data.data.imgs
-				console.log(authorList)
+				 authorList.value = res.data.data.result
 			}
 		});
 	})

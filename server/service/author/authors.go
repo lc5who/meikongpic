@@ -5,6 +5,7 @@ import (
 	"github.com/flipped-aurora/gin-vue-admin/server/model/author"
 	authorReq "github.com/flipped-aurora/gin-vue-admin/server/model/author/request"
 	"github.com/flipped-aurora/gin-vue-admin/server/model/common/request"
+	"github.com/flipped-aurora/gin-vue-admin/server/model/images"
 )
 
 type AuthorsService struct {
@@ -66,4 +67,22 @@ func (authorsService *AuthorsService) GetTopAuthorList(count int) (authors []aut
 	db := global.GVA_DB.Model(&author.Authors{})
 	err = db.Order("id desc").Limit(count).Find(&authors).Error
 	return authors, err
+}
+func (authorsService *AuthorsService) GetAuthorSIndex(count int) interface{} {
+	var authors []author.Authors
+	var imgs []images.Images
+	dbAuthor := global.GVA_DB.Model(&author.Authors{})
+	dbImages := global.GVA_DB.Model(&images.Images{})
+	dbAuthor.Order("id asc").Limit(count).Find(&authors)
+	result := make(map[string]interface{})
+	returnData := make(map[int]interface{})
+	for k, v := range authors {
+		dbImages.Where("author_id = ?", v.ID).Limit(3).Find(&imgs)
+		result["nickName"] = v.Nickname
+		result["authorsId"] = v.ID
+		result["avatar"] = v.Avatar
+		result["images"] = imgs
+		returnData[k] = result
+	}
+	return returnData
 }
