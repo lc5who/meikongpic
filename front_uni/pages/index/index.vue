@@ -21,7 +21,7 @@
 				推荐创作者
 			</view>
 
-			<scroll-view  scroll-x="true" @scroll="scroll" class="author_scroll">
+			<scroll-view scroll-x="true" @scroll="scroll" class="author_scroll">
 				<template v-if="authorList.length!=0">
 					<view class="author_avatar_box" v-for="(item,index) in authorList" :key="index">
 						<image :src="item.avatar" class="author_avatar_image"></image>
@@ -31,9 +31,11 @@
 		</view>
 		<view class="content">
 			<template v-if="imageList.length!=0">
-			<view class="content_image" v-for="(item,index) in imageList" :key="index">
-				<image :src="item.url" mode=""></image>
-			</view>
+				<navigator :url="'/pages/index/detail/detail?id='+item.ID" v-for="(item,index) in imageList" :key="index">
+					<view class="content_image">
+						<image :src="item.url" mode=""></image>
+					</view>
+				</navigator>
 			</template>
 		</view>
 	</view>
@@ -53,7 +55,7 @@
 	}
 	let authorList = ref([])
 	let imageList = ref([])
-	
+
 	const scroll = e => {
 		old.scrollTop = e.detail.scrollTop
 	}
@@ -63,8 +65,8 @@
 			url: 'http://127.0.0.1:8888/index/index', //仅为示例，并非真实接口地址。
 			success: (res) => {
 
-				 authorList.value = res.data.data.authors
-				 imageList.value = res.data.data.imagesList
+				authorList.value = res.data.data.authors
+				imageList.value = res.data.data.imagesList
 				// imageList.value = res.data.data.imgs
 
 			}
@@ -147,6 +149,7 @@
 		white-space: nowrap;
 		width: 100%;
 	}
+
 	.author_avatar_box {
 		display: inline-block;
 		width: 80upx;
@@ -167,15 +170,16 @@
 		grid-template-columns: repeat(3, minmax(0, 1fr));
 		gap: 20upx;
 	}
-	.content_image{
+
+	.content_image {
 		height: 400upx;
 		border: 2px solid #fff;
 		border-radius: 10px;
 	}
 
-	.content_image image{
+	.content_image image {
 		height: 100%;
 		width: 100%;
-		
+
 	}
 </style>

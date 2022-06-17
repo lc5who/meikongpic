@@ -40,6 +40,15 @@
 		    }
 		    
 		}
+        ,{
+            "path" : "pages/index/detail/detail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"tabBar": {
 		"color": "white",
