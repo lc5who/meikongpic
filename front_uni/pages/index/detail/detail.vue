@@ -11,10 +11,10 @@
 			</navigator>
 		</view>
 
-		<image src="http://rdgcuypkk.hn-bkt.clouddn.com/1655275252微信图片_20220615144044.jpg" mode=""></image>
+		<image :src="imageData.url" mode=""></image>
 
 		<view class="menu">
-			<avatar src="http://rdgcuypkk.hn-bkt.clouddn.com/1655275252微信图片_20220615144044.jpg"></avatar>
+			<avatar :src="authorData.avatar"></avatar>
 			<view class="download">
 				<uni-icons type="download" color="white" size="40" @click="download"></uni-icons>
 				<view class="">
@@ -70,9 +70,25 @@
 	} from 'vue'
 	import avatar from '../../../components/avatar.vue'
 	const popup = ref()
+	let imageData= ref({})
+	let authorData= ref({})
 	onMounted(() => {
-		console.log(popup);
+		let routes = getCurrentPages(); // 获取当前打开过的页面路由数组
+		let curRoute = routes[routes.length - 1].route //获取当前页面路由
+		let curParam = routes[routes.length - 1].$page.options; //获取路由参数
+		console.log(curParam.id);
+		uni.request({
+			url: 'http://127.0.0.1:8888/index/detail?id='+curParam.id, //仅为示例，并非真实接口地址。
+			success: (res) => {
+				imageData.value =res.data.data.image
+				authorData.value  =res.data.data.author
+				console.log(imageData.value);
+				console.log(authorData.value);
+			}
+		});
+
 	})
+
 
 	const download = () => {
 		console.log(popup.value);

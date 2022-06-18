@@ -1,5 +1,5 @@
 <template>
-	<view class="author_avatar_box">
+	<view class="author_avatar_box" :style="{height:size+'upx',width:size+'upx'}">
 		<image :src="src" class="author_avatar_image"></image>
 	</view>
 </template>
@@ -11,6 +11,10 @@
 			src: {
 				type: String,
 				default: ''
+			},
+			size:{
+				type:String,
+				default:'100'
 			}
 		},
 		data() {
@@ -29,8 +33,8 @@
 	}
 	
 	.author_avatar_image {
-		width: 100upx;
-		height: 100upx;
+		width: 100%;
+		height: 100%;
 		border-radius: 50%;
 		border: solid 5upx white;
 	}

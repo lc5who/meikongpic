@@ -7,7 +7,7 @@
 
 		</view>
 		<view class="banner">
-			<img src="../../static/banner.jpg" alt="">
+			<img src="../../static/banner.jpg" alt="" style="width: 100%;height: 100%;">
 		</view>
 		<view class="search">
 			<view class="search_bar">
@@ -23,9 +23,15 @@
 
 			<scroll-view scroll-x="true" @scroll="scroll" class="author_scroll">
 				<template v-if="authorList.length!=0">
+					
+						
+					
 					<view class="author_avatar_box" v-for="(item,index) in authorList" :key="index">
+						<navigator :url="'/pages/author/detail/detail?id='+item.ID">
 						<image :src="item.avatar" class="author_avatar_image"></image>
+						</navigator>
 					</view>
+					
 				</template>
 			</scroll-view>
 		</view>

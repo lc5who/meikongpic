@@ -64,6 +64,10 @@ func (imagesService *ImagesService) GetImagesInfoList(info imagesReq.ImagesSearc
 
 func (imagesService *ImagesService) GetTopImageList(count int) (imgs []images.Images, err error) {
 	db := global.GVA_DB.Model(&images.Images{})
-	err = db.Order("id desc").Limit(count).Find(&imgs).Error
+	if count == 0 {
+		err = db.Order("id desc").Find(&imgs).Error
+	} else {
+		err = db.Order("id desc").Limit(count).Find(&imgs).Error
+	}
 	return imgs, err
 }
