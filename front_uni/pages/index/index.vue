@@ -68,7 +68,7 @@
 
 	onMounted(() => {
 		uni.request({
-			url: 'http://192.168.0.103:8888/index/index', //仅为示例，并非真实接口地址。
+			url: 'http://127.0.0.1:8888/index/index', //仅为示例，并非真实接口地址。
 			success: (res) => {
 
 				authorList.value = res.data.data.authors

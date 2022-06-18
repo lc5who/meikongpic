@@ -78,7 +78,7 @@
 		let curParam = routes[routes.length - 1].$page.options; //获取路由参数
 		console.log(curParam.id);
 		uni.request({
-			url: 'http://192.168.0.103:8888/index/detail?id='+curParam.id, //仅为示例，并非真实接口地址。
+			url: 'http://127.0.0.1:8888/index/detail?id='+curParam.id, //仅为示例，并非真实接口地址。
 			success: (res) => {
 				imageData.value =res.data.data.image
 				authorData.value  =res.data.data.author
