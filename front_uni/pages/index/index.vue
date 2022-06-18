@@ -1,6 +1,6 @@
 <template>
 	<view class="container">
-		<view class="feedback" @click="">
+		<view class="feedback" @click="uni.navigateTo('/pages/feedback/feedback')">
 			<navigator url="/pages/feedback/feedback" hover-class="navigator-hover">
 				我要吐槽
 			</navigator>
@@ -68,7 +68,7 @@
 
 	onMounted(() => {
 		uni.request({
-			url: 'http://127.0.0.1:8888/index/index', //仅为示例，并非真实接口地址。
+			url: 'http://192.168.0.103:8888/index/index', //仅为示例，并非真实接口地址。
 			success: (res) => {
 
 				authorList.value = res.data.data.authors
@@ -78,18 +78,16 @@
 			}
 		});
 	})
-	// nextTick(() => {
-	// 	console.log('nextTick');
-	// 	console.log(authorList);
-	// })
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
+
 	.container {
 		display: flex;
 		flex-direction: column;
 		width: 100vw;
-		overflow-y: hidden;
+		height: 100vh;
+		overflow-y: auto;
 		background-color: #000;
 	}
 
@@ -105,6 +103,7 @@
 		border-bottom-right-radius: 15upx;
 		position: fixed;
 		top: 40upx;
+		z-index: 11;
 	}
 
 	.banner {
@@ -130,13 +129,16 @@
 		flex-direction: row;
 		justify-content: flex-start;
 		align-items: center;
+		input{
+			width: 60%;
+		}
 	}
 
 	.search_btn {
-		width: 200upx;
+		width: 30%;
 		color: white;
 		background-color: rgb(47, 38, 155);
-		left: 60upx;
+		// left: 60upx;
 	}
 
 	.author {
@@ -179,13 +181,13 @@
 
 	.content_image {
 		height: 400upx;
-		border: 2px solid #fff;
-		border-radius: 10px;
 	}
 
 	.content_image image {
 		height: 100%;
 		width: 100%;
+		border: 1px solid #fff;
+		border-radius: 10px;
 
 	}
 </style>

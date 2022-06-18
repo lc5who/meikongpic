@@ -34,7 +34,10 @@
 	/* #endif */
 	
 	/* #ifdef H5 */
-	uni-scroll-view .uni-scroll-view::-webkit-scrollbar { display: none }
+	// uni-scroll-view .uni-scroll-view::-webkit-scrollbar { display: none }
+	::-webkit-scrollbar {
+	  display: none; /* Chrome Safari */
+	}
 	/* #endif */
 	.example-info {
 		font-size: 14px;
