@@ -16,16 +16,16 @@
 				<image :src="value.avatar" mode="" class="author_avatar_image"></image>
 				<text class="click_me_text_u">{{value.nickName}}</text>
 			</view>
-			<view class="card_title">
+			<view class="card_title" @click="linkAuthorDetail(value.authorsId)">
 				查看全部>
 			</view>
 			<view class="card_content" v-if="authorList.length!=0">
-				<view class="content_image">
+				<view class="content_image" @click="linkImgDetail(value.images[0].ID)">
 					<image :src="value.images[0].url" mode=""></image>
 				</view>
-				<view class="content_image">
+				<view class="content_image" @click="linkImgDetail(value.images[1].ID)">
 					<image :src="value.images[1].url" mode=""></image>
-				</view><view class="content_image">
+				</view><view class="content_image" @click="linkImgDetail(value.images[2].ID)">
 					<image :src="value.images[2].url" mode=""></image>
 				</view>
 			</view>
@@ -50,6 +50,16 @@
 			}
 		});
 	})
+	const linkImgDetail=(imgId)=>{
+		uni.navigateTo({
+			url: '/pages/index/detail/detail?id='+imgId
+		});
+	}
+	const linkAuthorDetail=(authorId)=>{
+		uni.navigateTo({
+			url: '/pages/author/detail/detail?id='+authorId
+		});
+	}
 </script>
 
 <style lang="scss">
