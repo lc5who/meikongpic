@@ -98,7 +98,30 @@
 	
 	const downloadimage=() =>{
 		console.log(1111);
+		let datastr =localStorage.getItem("download")
+		if(!datastr){
+			datastr='[]'
+		}
+		let data = JSON.parse(datastr)
+		console.log(data);
+		data.push(imageData.value)
+		localStorage.setItem("download",JSON.stringify(data))
+		downloadFile(imageData.value.url)
 	}
+	/* #ifdef H5 */
+	const downloadFile=(url)=> {
+	  const link = document.createElement("a");
+	  fetch(url)
+	    .then((res) => res.blob())
+	    .then((blob) => {
+	      link.href = URL.createObjectURL(blob);
+	      link.download = "";
+	      document.body.appendChild(link);
+	      link.click();
+	      document.body.removeChild(link);
+	    });
+	}
+	/* #endif */
 </script>
 
 <style lang="scss" scoped>

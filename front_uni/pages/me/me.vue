@@ -30,7 +30,7 @@
 				</view>
 				</template>
 			</uni-list-item>
-			<uni-list-item title="下载记录" link to="" @click="" class="list_box_list">
+			<uni-list-item title="下载记录" link to="" @click="downrecord()" class="list_box_list">
 				<template v-slot:body>
 					<view class="list_view">
 					<view>
@@ -115,6 +115,11 @@
 	const linkJoinAuthor=()=>{
 		uni.navigateTo({
 			url: '/pages/author/joinauthor/joinauthor'
+		});
+	}
+	const downrecord=()=>{
+		uni.navigateTo({
+			url: '/pages/me/downrecord/downrecord'
 		});
 	}
 	const apitest=()=>{

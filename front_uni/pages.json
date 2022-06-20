@@ -67,6 +67,15 @@
 		    }
 		    
 		}
+        ,{
+            "path" : "pages/me/downrecord/downrecord",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"tabBar": {
 		"color": "white",
