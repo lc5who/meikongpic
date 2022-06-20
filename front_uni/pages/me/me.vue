@@ -18,7 +18,7 @@
 	</view>
 	<view class="" style="margin-top: 50upx;">
 		<uni-list class="list-box">
-			<uni-list-item title="成为创作者" clickable  @click="" class="list_box_list">
+			<uni-list-item title="成为创作者" clickable  @click="linkJoinAuthor()" class="list_box_list">
 				<template v-slot:body>
 					<view class="list_view">
 					<view>
@@ -109,7 +109,12 @@
 	}
 	const linkProblem=()=>{
 		uni.navigateTo({
-			url: './problem'
+			url: './problem',
+		});
+	}
+	const linkJoinAuthor=()=>{
+		uni.navigateTo({
+			url: '/pages/author/joinauthor/joinauthor'
 		});
 	}
 	const apitest=()=>{
